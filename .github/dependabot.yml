@@ -1,24 +1,33 @@
 version: 2
+
+# Minor and patch bumps are batched into one reviewable PR per ecosystem.
+# Major bumps are deliberately excluded from the group so each arrives on its own:
+# a major is a migration, not an update. Hardhat 2 -> 3, for instance, drops the
+# TypeChain plugin this project depends on across three repositories.
+
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
     open-pull-requests-limit: 5
     groups:
-      hardhat:
+      safe-updates:
         patterns:
-          - '@nomicfoundation/*'
-          - 'hardhat*'
-          - '@typechain/*'
-          - 'typechain'
-      linting:
-        patterns:
-          - 'eslint*'
-          - '@typescript-eslint/*'
-          - 'prettier*'
+          - '*'
+        update-types:
+          - minor
+          - patch
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
+    open-pull-requests-limit: 5
+    groups:
+      safe-updates:
+        patterns:
+          - '*'
+        update-types:
+          - minor
+          - patch
