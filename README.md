@@ -21,7 +21,7 @@ feed and a Uniswap V3-style DEX.
 - [How it works](#how-it-works)
 - [Contract architecture](#contract-architecture)
 - [Protocol parameters](#protocol-parameters)
-- [Deployed addresses](#deployed-addresses)
+- [Network requirements](#network-requirements)
 - [Getting started](#getting-started)
 - [Testing](#testing)
 - [Deploying](#deploying)
@@ -171,35 +171,24 @@ Owner-only setters: `setIsMarketPaused`, `setPriceFeed`, `setWrappedEth`,
 `setFeeParams`, `setRewardParams`, `setSupplyParams`, `setReserveParams`,
 `setDexParams`.
 
-## Deployed addresses
+## Network requirements
 
-Recorded under `ignition/deployments/`. The proxy address is the one to interact
-with; the implementation changes across upgrades.
+This repository ships **no deployment**. There is no canonical instance to point at —
+you deploy your own, on whatever chain you choose, and hold your own owner key.
 
-### Sonic mainnet (chain ID 146)
+The protocol needs three things from the target chain:
 
-| Contract | Address |
+| Dependency | Used for |
 | --- | --- |
-| Launchpad proxy | [`0x9E23D1354E30C2274D3f0Ae2D70c9324081A6E4c`](https://sonicscan.org/address/0x9E23D1354E30C2274D3f0Ae2D70c9324081A6E4c) |
-| Launchpad implementation | [`0x7F5b99290a5F9bf64777919937bC4D6B0e2C165a`](https://sonicscan.org/address/0x7F5b99290a5F9bf64777919937bC4D6B0e2C165a) |
+| A Chainlink-compatible price feed for the native token | Pegging the launch price to a stable USD value |
+| The canonical wrapped native token | Pairing liquidity at migration |
+| A Uniswap V3-style DEX (pool factory + nonfungible position manager) | The pool created at migration |
 
-### Sonic testnet (chain ID 14601)
+Fill these into `ignition/modules/m2025061201_Init.ts` for your network before
+deploying. The values currently there target Sonic; on a chain without a deployed DEX,
+set the factory and position manager to the zero address — everything works except
+migration, which will revert when a curve sells out.
 
-| Contract | Address |
-| --- | --- |
-| Launchpad proxy | `0xcafD49ea48EFa63e94a8392Bb78924Ed1a26e702` |
-| Launchpad implementation | `0xE1fA6aCF522CF1057b716f0d21d1b11439D054cd` |
-
-### Sonic Blaze testnet (chain ID 57054, legacy)
-
-| Contract | Address |
-| --- | --- |
-| Launchpad proxy | `0x9E23D1354E30C2274D3f0Ae2D70c9324081A6E4c` |
-| Launchpad implementation | `0x6c642ACB9f06e83B2153E89219a2390620aBC492` |
-
-> Neither Sonic testnet has a deployed DEX factory or position manager, so those
-> parameters are set to the zero address there. Token migration cannot complete on
-> testnet — use a mainnet fork to exercise that path.
 
 ## Getting started
 
@@ -266,8 +255,9 @@ yarn test:fork:startNode
 ## Deploying
 
 Deployments use [Hardhat Ignition](https://hardhat.org/ignition). Modules are
-sequential and named by date (`m2025061201_Init`, `m2025062901_RenameSocialNetwork`),
-so a deployment replays only the modules it has not applied yet.
+sequential and named by date, starting at `m2025061201_Init`, so a deployment replays
+only the modules it has not applied yet. Later upgrades go in new modules appended to
+`ignition/modules/index.ts`.
 
 ```bash
 yarn contracts:deploy:testnet        # Sonic testnet (14601)
@@ -276,34 +266,38 @@ yarn contracts:deploy:fork           # local fork (1337)
 yarn contracts:deploy                # Sonic mainnet (146)
 ```
 
-Per-network constructor parameters — fee recipient, price feed, wrapped native
-token, DEX factory, DEX position manager — live in each module's `parameters` block
-under `ignition/modules/`. **Change the `feeRecipient` before deploying your own
-instance**; it defaults to the Tokenzyme protocol address and it is the account
-that receives protocol fees and the LP position minted at migration.
+Before your first deployment:
+
+- Set **`FEE_RECIPIENT`** in `.env`. There is no default — it is the account that
+  receives protocol trade fees *and* the liquidity position minted when a token
+  migrates to the DEX. The deploy task refuses to run without it.
+- Set **`DEPLOYER_PRIVATE_KEY`**. The account it belongs to becomes the contract
+  **owner**, which is fully privileged — read
+  [SECURITY.md](./SECURITY.md#the-owner-is-fully-privileged) before using an EOA you
+  control personally. Transfer ownership to a multisig for anything real.
+- Fill in the per-network addresses in `ignition/modules/m2025061201_Init.ts` for your
+  chain — see [Network requirements](#network-requirements).
 
 Ignition writes the resulting addresses, artifacts and journal to
-`ignition/deployments/chain-<id>/`. Commit that directory — it is the deployment's
-source of truth.
+`ignition/deployments/chain-<id>/`. That directory is **git-ignored**: this repository
+publishes no deployment, and yours is yours. Back it up somewhere — it is the state
+Ignition needs to apply later upgrade modules.
 
 To resume a partially applied deployment from a specific module:
 
 ```bash
-yarn hardhat deployContracts --network testnet --from m2025062901_RenameSocialNetwork
+yarn hardhat deployContracts --network testnet --from m2025061201_Init
 ```
 
 ## Verifying
 
-```bash
-yarn contracts:verify
-```
-
-The script targets `chain-146` (Sonic mainnet). For any other network, call
-Ignition directly:
+Pass the deployment ID, which is `chain-<id>` matching the directory Ignition wrote:
 
 ```bash
-yarn hardhat ignition verify chain-14601 --include-unrelated-contracts
+yarn contracts:verify chain-146
 ```
+
+Requires `ETHERSCAN_API_KEY` in `.env` — a Sonicscan key when targeting Sonic.
 
 ## Related repositories
 

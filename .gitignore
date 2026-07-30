@@ -5,7 +5,7 @@
 /artifacts
 cache
 hardhat-dependency-compiler
-ignition/deployments/chain-1337
+ignition/deployments
 lib
 node_modules
 typechain

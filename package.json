@@ -17,7 +17,7 @@
     "contracts:deploy:testnet": "yarn build && hardhat deployContracts --network testnet",
     "contracts:deploy:testnetLegacy": "yarn build && hardhat deployContracts --network testnetLegacy",
     "contracts:size": "hardhat size-contracts",
-    "contracts:verify": "hardhat ignition verify chain-146 --include-unrelated-contracts",
+    "contracts:verify": "hardhat ignition verify --include-unrelated-contracts",
     "format": "prettier --write './**/*.{ts,cts,mts,js,cjs,mjs,json,yml,yaml}'",
     "lint": "eslint .",
     "test": "TEST=true && hardhat test",

@@ -35,8 +35,12 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      # TEST=true also compiles test/contracts/*.sol — see `dependencyCompiler` in
+      # hardhat.config.ts. The suite imports TypeChain types for those contracts, so
+      # without it the Lint step below cannot resolve them and fails with hundreds of
+      # cascading `error`-typed-value errors.
       - name: Compile contracts
-        run: yarn hardhat compile
+        run: TEST=true yarn hardhat compile
 
       - name: Lint
         run: yarn lint

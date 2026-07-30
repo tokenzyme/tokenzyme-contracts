@@ -4,10 +4,21 @@
 
 **These contracts have not undergone an independent security audit.**
 
-They are published so the protocol can be inspected, forked and improved in the
-open — not as a warranty of correctness. A deployment of this code exists on Sonic
-mainnet and handles real value. If you deploy your own instance, or interact with
-any deployment, you do so entirely at your own risk.
+They are published so the protocol can be inspected, forked and learned from — not as
+a warranty of correctness, and not as a service anyone operates.
+
+## There is no deployment
+
+This repository publishes **no contract addresses and no deployment**. There is no
+canonical instance, nothing operated by anyone, and nothing to interact with. It is
+source you deploy yourself.
+
+That is deliberate. A published address on unaudited, upgradeable code is an invitation
+to trust an operator, and there is no operator here.
+
+If you deploy your own instance, you do so entirely at your own risk. Read
+[Trust assumptions and known limitations](#trust-assumptions-and-known-limitations)
+first — the owner of a deployment is fully privileged, and that owner will be you.
 
 If you are considering an audit or a formal review and want context on the design,
 open a discussion — help is welcome.
@@ -39,14 +50,17 @@ Please include:
 We will credit you in the advisory unless you ask us not to. There is no formal
 bug bounty program at this time.
 
-Please give us reasonable time to ship a fix before disclosing publicly. If a
-deployment is actively being exploited, say so prominently in your report — the
-protocol owner can pause trading with `setIsMarketPaused`.
+Please give us reasonable time to ship a fix before disclosing publicly.
+
+Note that a report here can only ever result in a fix to **the source**. This project
+operates no deployment, so there is nothing anyone here can pause or patch on your
+behalf — see [There is no deployment](#there-is-no-deployment). If you find a live
+instance under attack, contact whoever deployed and operates it.
 
 ## Supported versions
 
-Only the `main` branch and the currently deployed implementation receive security
-fixes. There are no long-term support branches.
+Security fixes land on `main` and nowhere else. There are no long-term support
+branches, and no deployed instance is maintained or updated.
 
 ## Trust assumptions and known limitations
 
