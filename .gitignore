@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.vscode
+.yarn
+/artifacts
+cache
+hardhat-dependency-compiler
+ignition/deployments/chain-1337
+lib
+node_modules
+typechain

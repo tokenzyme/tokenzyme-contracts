@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      hardhat:
+        patterns:
+          - '@nomicfoundation/*'
+          - 'hardhat*'
+          - '@typechain/*'
+          - 'typechain'
+      linting:
+        patterns:
+          - 'eslint*'
+          - '@typescript-eslint/*'
+          - 'prettier*'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

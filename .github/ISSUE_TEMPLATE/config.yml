@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/tokenzyme/tokenzyme-contracts/security/advisories/new
+    about: Never report vulnerabilities in a public issue. Use private disclosure — see SECURITY.md.
+  - name: Ask a question or propose a protocol change
+    url: https://github.com/tokenzyme/tokenzyme-contracts/discussions
+    about: Design discussions and questions belong in Discussions, not issues.

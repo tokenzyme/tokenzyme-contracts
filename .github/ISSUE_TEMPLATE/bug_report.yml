@@ -1,0 +1,58 @@
+name: Bug report
+description: Report incorrect behaviour in the contracts, tests or deployment scripts
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not use this form for security vulnerabilities.** Report those privately —
+        see [SECURITY.md](https://github.com/tokenzyme/tokenzyme-contracts/blob/main/SECURITY.md).
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the incorrect behaviour and what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: A failing test or a Hardhat script is the fastest path to a fix.
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: contract
+    attributes:
+      label: Affected contract or function
+      placeholder: 'Launchpad.buyTokens'
+
+  - type: dropdown
+    id: network
+    attributes:
+      label: Where did you observe this?
+      options:
+        - Local unit tests
+        - Local fork
+        - Sonic testnet (14601)
+        - Sonic Blaze testnet (57054)
+        - Sonic mainnet (146)
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: commit
+    attributes:
+      label: Commit or version
+      placeholder: 'e.g. main @ a1b2c3d'
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else?
+      description: Transaction hashes, logs, stack traces.
