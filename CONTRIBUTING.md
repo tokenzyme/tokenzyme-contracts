@@ -105,6 +105,30 @@ who actually ran the deployment.
 New Ignition modules follow the `mYYYYMMDDNN_Description` naming pattern and must
 be appended — never edit a module that has already been applied to a live network.
 
+## Dependencies
+
+Dependabot opens **one grouped pull request per ecosystem, once a month**, containing
+every minor and patch bump. Review it, check CI, merge.
+
+**Major bumps are ignored by configuration and are the developer's job.** A major is a
+migration: bumping the version in the manifest does none of the work, it just turns the
+build red. When you want one, do it deliberately — read the upstream migration guide,
+change the code it requires, and land it as its own reviewed pull request:
+
+```bash
+yarn up <package>@<version>
+yarn hardhat compile && yarn lint && yarn test
+```
+
+Two things that still get through, on purpose or by accident:
+
+- **Security updates ignore this policy**, which is intended. If a vulnerability's only
+  fix is in a major, Dependabot proposes it regardless. Nothing merges itself — it
+  arrives as a pull request, CI runs on it, and a human decides.
+- **Packages below `1.0`.** Semver says any `0.x` bump may break, but Dependabot
+  classifies `0.20 -> 0.21` as a minor, so it lands in the grouped PR. Give those
+  entries a closer look than the rest.
+
 ## Review
 
 A maintainer will review your PR. Expect scrutiny proportional to the risk of the
