@@ -1,9 +1,14 @@
 version: 2
 
-# Minor and patch bumps are batched into one reviewable PR per ecosystem.
-# Major bumps are deliberately excluded from the group so each arrives on its own:
-# a major is a migration, not an update, and batching one in with harmless bumps
-# makes the whole group unmergeable.
+# Major bumps are ignored outright. A major is a migration, not an update: bumping the
+# version in the manifest does not do the work, it just turns the build red. When one
+# is genuinely wanted, do it deliberately, by hand, with the migration guide open.
+#
+# This does not weaken security. Per GitHub's documentation, `update-types` under
+# `ignore` affects version updates only — Dependabot security updates still come
+# through, including ones that require a major.
+#
+# Everything else lands in a single grouped PR per ecosystem, once a month.
 
 updates:
   - package-ecosystem: npm
@@ -11,23 +16,25 @@ updates:
     schedule:
       interval: monthly
     open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-major
     groups:
       safe-updates:
         patterns:
           - '*'
-        update-types:
-          - minor
-          - patch
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
     open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-major
     groups:
       safe-updates:
         patterns:
           - '*'
-        update-types:
-          - minor
-          - patch
