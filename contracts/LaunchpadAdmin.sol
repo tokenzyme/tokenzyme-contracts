@@ -3,10 +3,10 @@ pragma solidity 0.8.28;
 
 import '@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol';
-import '@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol';
+import '@openzeppelin/contracts/utils/ReentrancyGuard.sol';
 import './storages/LaunchpadStorage.sol';
 
-abstract contract LaunchpadAdmin is OwnableUpgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable {
+abstract contract LaunchpadAdmin is OwnableUpgradeable, UUPSUpgradeable, ReentrancyGuard {
   uint16 private constant DEFAULT_TRADE_FEE = 1_00;
   uint16 private constant DEFAULT_TRADE_FEE_SHARE = 50;
   uint16 private constant DEFAULT_MIGRATION_REMAINING_ETH_SHARE = 50_00;
@@ -41,8 +41,6 @@ abstract contract LaunchpadAdmin is OwnableUpgradeable, UUPSUpgradeable, Reentra
     address dexPositionManager
   ) external initializer {
     __Ownable_init(msg.sender);
-    __UUPSUpgradeable_init();
-    __ReentrancyGuard_init();
 
     LaunchpadStorage.State storage state = LaunchpadStorage.get();
     state.priceFeed = priceFeed;
