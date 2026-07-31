@@ -19,9 +19,10 @@ sources and keep the upstream SPDX identifier.
 
 `GPL-2.0-or-later` is a copyleft license. These files are interface declarations
 only — they contain no implementation — and are kept under their original terms.
-Do not remove or alter their SPDX headers. If you redistribute this repository,
-these three files remain governed by `GPL-2.0-or-later` rather than by the MIT
-license that covers the rest of the project.
+Do not remove or alter their SPDX headers. If you redistribute this repository, the
+two `GPL-2.0-or-later` files above remain governed by that license rather than by
+the MIT license that covers the rest of the project. `IWrappedEth.sol` is MIT, like
+the rest.
 
 ## Compile-time dependencies
 
