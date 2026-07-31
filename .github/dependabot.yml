@@ -2,9 +2,8 @@ version: 2
 
 # Minor and patch bumps are batched into one reviewable PR per ecosystem.
 # Major bumps are deliberately excluded from the group so each arrives on its own:
-# a major is a migration, not an update. Hardhat 2 -> 3 is the example that motivated
-# this — it drops the TypeChain plugin whose output tokenzyme-core and tokenzyme-app
-# both depend on.
+# a major is a migration, not an update, and batching one in with harmless bumps
+# makes the whole group unmergeable.
 
 updates:
   - package-ecosystem: npm
