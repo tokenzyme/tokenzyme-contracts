@@ -24,7 +24,7 @@
     "test:fork:startNode": "FORK=true && yarn hardhat node"
   },
   "dependencies": {
-    "@chainlink/contracts": "1.4.0",
+    "@chainlink/contracts": "1.5.0",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.8",
     "@nomicfoundation/hardhat-ethers": "3.0.8",
     "@nomicfoundation/hardhat-ignition": "0.15.11",
@@ -33,14 +33,14 @@
     "@nomicfoundation/hardhat-toolbox": "5.0.0",
     "@nomicfoundation/hardhat-verify": "2.0.14",
     "@nomicfoundation/ignition-core": "0.15.11",
-    "@openzeppelin/contracts": "5.3.0",
-    "@openzeppelin/contracts-upgradeable": "5.3.0",
+    "@openzeppelin/contracts": "5.6.1",
+    "@openzeppelin/contracts-upgradeable": "5.6.1",
     "@typechain/ethers-v6": "0.5.1",
     "@typechain/hardhat": "9.1.0",
     "dotenv": "16.5.0",
-    "ethers": "6.14.3",
+    "ethers": "6.17.0",
     "hardhat": "2.24.2",
-    "hardhat-contract-sizer": "2.10.0",
+    "hardhat-contract-sizer": "2.10.1",
     "hardhat-dependency-compiler": "1.2.1"
   },
   "devDependencies": {
@@ -56,10 +56,10 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.10.1",
     "eslint-plugin-deprecation": "2.0.0",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-prettier": "5.4.1",
-    "prettier": "3.5.3",
-    "solidity-coverage": "0.8.16",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-prettier": "5.5.6",
+    "prettier": "3.9.6",
+    "solidity-coverage": "0.8.17",
     "ts-node": "10.9.2",
     "typechain": "8.3.2",
     "typescript": "5.8.3"
