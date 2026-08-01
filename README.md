@@ -340,7 +340,7 @@ expected and nothing here is gated behind it.
 0x31c8EDeD9D516a7BD854457710B9629F13BBA4FD
 ```
 
-[![Solana](https://img.shields.io/badge/Solana-9945FF?style=for-the-badge&logo=solana&logoColor=white)](https://explorer.solana.com/address/HsgFMPqjzUwbsd7dyFp2vjfLLLN6eG2Et2H9qmCBEBng)
+[![Solana](https://img.shields.io/badge/Solana-9945FF?style=for-the-badge&logo=solana&logoColor=white)](https://solscan.io/account/HsgFMPqjzUwbsd7dyFp2vjfLLLN6eG2Et2H9qmCBEBng)
 
 ```
 HsgFMPqjzUwbsd7dyFp2vjfLLLN6eG2Et2H9qmCBEBng
