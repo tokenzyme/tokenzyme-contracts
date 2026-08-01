@@ -334,13 +334,20 @@ assumptions and known limitations.
 If this project helped you in any way, consider making a donation. It is not
 expected and nothing here is gated behind it.
 
-| Network | Address |
-| --- | --- |
-| EVM (Ethereum, Sonic, Base, Arbitrum, …) | `0x31c8EDeD9D516a7BD854457710B9629F13BBA4FD` |
-| Solana | `HsgFMPqjzUwbsd7dyFp2vjfLLLN6eG2Et2H9qmCBEBng` |
+![EVM](https://img.shields.io/badge/EVM-Ethereum%20%C2%B7%20Sonic%20%C2%B7%20Base%20%C2%B7%20Arbitrum-3C3C3D?style=for-the-badge&logo=ethereum&logoColor=white)
+
+```
+0x31c8EDeD9D516a7BD854457710B9629F13BBA4FD
+```
+
+![Solana](https://img.shields.io/badge/Solana-9945FF?style=for-the-badge&logo=solana&logoColor=white)
+
+```
+HsgFMPqjzUwbsd7dyFp2vjfLLLN6eG2Et2H9qmCBEBng
+```
 
 > [!WARNING]
-> Send only on a network listed above, and check the address against this page on
+> Send only on a network shown above, and check the address against this page on
 > GitHub rather than a copy elsewhere. Transfers cannot be reversed.
 
 ## License
