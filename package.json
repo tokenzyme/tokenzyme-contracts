@@ -39,7 +39,7 @@
     "@typechain/hardhat": "9.1.0",
     "dotenv": "16.6.1",
     "ethers": "6.17.0",
-    "hardhat": "2.29.0",
+    "hardhat": "2.29.1",
     "hardhat-contract-sizer": "2.10.1",
     "hardhat-dependency-compiler": "1.2.1"
   },

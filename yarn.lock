@@ -4567,9 +4567,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hardhat@npm:2.29.0":
-  version: 2.29.0
-  resolution: "hardhat@npm:2.29.0"
+"hardhat@npm:2.29.1":
+  version: 2.29.1
+  resolution: "hardhat@npm:2.29.1"
   dependencies:
     "@ethereumjs/util": "npm:^9.1.0"
     "@ethersproject/abi": "npm:^5.1.2"
@@ -4620,7 +4620,7 @@ __metadata:
       optional: true
   bin:
     hardhat: internal/cli/bootstrap.js
-  checksum: 10c0/3cf2b446e64ca877bcf26e95259024bc872a9e44b63151c3bcfaf88b200672423d9c182ec0460d0944e506a3b096dd76bc4f1e6ade3ce908275f4e407b582f7f
+  checksum: 10c0/a3bc7a2baa9c92435219417c88c8469873d980652dae475390f7c179d1a89795b73320861809855c56bc2951874ad7e52bc403d9c885d4271151a3730e0f059b
   languageName: node
   linkType: hard
 
@@ -7732,7 +7732,7 @@ __metadata:
     eslint-plugin-import: "npm:2.32.0"
     eslint-plugin-prettier: "npm:5.5.6"
     ethers: "npm:6.17.0"
-    hardhat: "npm:2.29.0"
+    hardhat: "npm:2.29.1"
     hardhat-contract-sizer: "npm:2.10.1"
     hardhat-dependency-compiler: "npm:1.2.1"
     prettier: "npm:3.9.6"
